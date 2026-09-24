@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sunrise Community Hospital - Book Appointment</title>
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+<body>
+
+  <header>
+    <div class="header-inner">
+      <div class="logo">Sunrise <span>Hospital</span></div>
+      <button class="menu-toggle" id="menuToggle">&#9776;</button>
+      <nav>
+        <ul id="navMenu">
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <li><a href="appointments.html" class="active">Book Appointment</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <div class="page-banner">
+    <h1>Book a Patient Appointment</h1>
+  </div>
+
+  <main>
+    <section>
+      <h2>Appointment Details</h2>
+      <p>Please fill in the form below. All fields are required.</p>
+
+      <!-- Success box is hidden by default; JS shows it if PHP redirected back with ?success=1 -->
+      <div class="success-box" id="successBox">
+        Your appointment request was received successfully. Our team will
+        contact you to confirm.
+      </div>
+
+      <!--
+        Task 2: Booking form
+        Task 4/5: This form submits to php/process_appointment.php,
+        which validates, stores in MySQL, and shows a message.
+        Task 3: JavaScript validates the fields BEFORE the form is submitted.
+      -->
+      <form id="appointmentForm" action="php/process_appointment.php" method="POST" novalidate>
+
+        <div class="form-group">
+          <label for="patientName">Patient Name</label>
+          <input type="text" id="patientName" name="patientName" placeholder="e.g. Jane Mwangi" />
+          <span class="error-message" id="err-patientName">Please enter the patient's full name.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="nationalId">National ID Number</label>
+          <input type="text" id="nationalId" name="nationalId" placeholder="e.g. 12345678" />
+          <span class="error-message" id="err-nationalId">Please enter a valid National ID (6-10 digits).</span>
+        </div>
+
+        <div class="form-group">
+          <label for="gender">Gender</label>
+          <select id="gender" name="gender">
+            <option value="">-- Select Gender --</option>
+            <option value="Female">Female</option>
+            <option value="Male">Male</option>
+            <option value="Other">Other</option>
+          </select>
+          <span class="error-message" id="err-gender">Please select a gender.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input type="text" id="phoneNumber" name="phoneNumber" placeholder="e.g. 0712345678" />
+          <span class="error-message" id="err-phoneNumber">Please enter a valid 10-digit phone number.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email Address</label>
+          <input type="text" id="email" name="email" placeholder="e.g. jane@example.com" />
+          <span class="error-message" id="err-email">Please enter a valid email address.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="department">Department</label>
+          <select id="department" name="department">
+            <option value="">-- Select Department --</option>
+            <option value="General Medicine">General Medicine</option>
+            <option value="Pediatrics">Pediatrics</option>
+            <option value="Maternity">Maternity</option>
+            <option value="Dental">Dental</option>
+            <option value="Laboratory">Laboratory</option>
+            <option value="Emergency">Emergency</option>
+          </select>
+          <span class="error-message" id="err-department">Please select a department.</span>
+        </div>
+
+        <div class="form-group">
+          <label for="appointmentDate">Appointment Date</label>
+          <input type="date" id="appointmentDate" name="appointmentDate" />
+          <span class="error-message" id="err-appointmentDate">Please choose a valid future date.</span>
+        </div>
+
+        <div class="form-actions">
+          <button type="submit" class="btn">Submit</button>
+          <button type="reset" class="btn btn-secondary" id="resetBtn">Reset</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2026 Sunrise Community Hospital. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+  <script src="js/validate.js"></script>
+</body>
+</html>
